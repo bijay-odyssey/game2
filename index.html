@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click the Button Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        #game-container {
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+        .button {
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            margin-top: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .count {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #2ecc71;
+        }
+        .message {
+            font-size: 1.2rem;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Click the Button Game</h1>
+        <button class="button" id="clickButton">Click Me!</button>
+        <div class="count" id="clickCount">Clicks: 0</div>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        const clickButton = document.getElementById("clickButton");
+        const clickCountDisplay = document.getElementById("clickCount");
+        const messageDisplay = document.getElementById("message");
+
+        const goal = 20; // Goal number of clicks
+
+        clickButton.addEventListener("click", () => {
+            clickCount++;
+            clickCountDisplay.textContent = `Clicks: ${clickCount}`;
+
+            if (clickCount === goal) {
+                messageDisplay.textContent = "Congratulations! You've reached the goal!";
+                messageDisplay.style.color = "#27ae60";
+                clickButton.disabled = true; // Disable button after reaching the goal
+                clickButton.textContent = "Game Over!";
+            }
+        });
+    </script>
+
+</body>
+</html>
